@@ -1,5 +1,6 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import {
+import axios from 'axios';
+import type { AxiosInstance, AxiosResponse } from 'axios';
+import type {
   User,
   Transaction,
   CreateTransactionData,
@@ -120,7 +121,7 @@ class ApiService {
 
   // Analytics Methods
   async getFinancialSummary(startDate?: string, endDate?: string): Promise<ApiResponse<FinancialSummary>> {
-    const params: any = {};
+    const params: Record<string, string> = {};
     if (startDate) params.startDate = startDate;
     if (endDate) params.endDate = endDate;
     
@@ -133,7 +134,7 @@ class ApiService {
     startDate?: string,
     endDate?: string
   ): Promise<ApiResponse<SpendingByCategory>> {
-    const params: any = { type };
+    const params: Record<string, string> = { type };
     if (startDate) params.startDate = startDate;
     if (endDate) params.endDate = endDate;
     
