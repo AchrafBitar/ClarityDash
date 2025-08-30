@@ -224,25 +224,6 @@ npm run preview     # Preview production build
 2. Deploy the `dist` folder to your hosting platform
 3. Configure the API URL in environment variables
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support and questions:
-- Create an issue in the repository
-- Check the documentation
-- Review the API endpoints
-
 ## 🔮 Future Enhancements
 
 - [ ] Advanced transaction filtering and search
@@ -257,4 +238,4 @@ For support and questions:
 
 ---
 
-Built with ❤️ using the MERN stack
+Built using the MERN stack
