@@ -34,17 +34,17 @@ const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
-        <div className="bg-white/95 backdrop-blur-md p-4 border border-slate-200 rounded-xl shadow-xl">
-          <p className="font-semibold text-slate-900 mb-2">{data.name}</p>
-          <div className="space-y-1 text-sm">
-            <p className="text-slate-600">
-              Amount: <span className="font-semibold text-slate-900">${data.value.toFixed(2)}</span>
+        <div className="bg-white border-2 border-gray-300 p-4 rounded-xl shadow-2xl">
+          <p className="font-bold text-black mb-2 text-lg">{data.name}</p>
+          <div className="space-y-2 text-base">
+            <p className="text-black">
+              Amount: <span className="font-bold text-blue-600">${data.value.toFixed(2)}</span>
             </p>
-            <p className="text-slate-600">
-              Percentage: <span className="font-semibold text-slate-900">{data.percentage}%</span>
+            <p className="text-black">
+              Percentage: <span className="font-bold text-green-600">{data.percentage}%</span>
             </p>
-            <p className="text-slate-600">
-              Transactions: <span className="font-semibold text-slate-900">{data.count}</span>
+            <p className="text-black">
+              Transactions: <span className="font-bold text-purple-600">{data.count}</span>
             </p>
           </div>
         </div>
@@ -58,12 +58,12 @@ const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
     return (
       <div className="flex flex-wrap justify-center gap-3 mt-6">
         {payload?.map((entry: any, index: number) => (
-          <div key={index} className="flex items-center gap-2 text-sm bg-white/50 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-slate-200/50">
+          <div key={index} className="flex items-center gap-2 text-sm bg-white border-2 border-gray-300 px-3 py-2 rounded-lg shadow-md">
             <div
-              className="w-3 h-3 rounded-full shadow-sm"
+              className="w-4 h-4 rounded-full shadow-sm border-2 border-white"
               style={{ backgroundColor: entry.color }}
             />
-            <span className="text-slate-700 font-medium">{entry.value}</span>
+            <span className="text-black font-bold">{entry.value}</span>
           </div>
         ))}
       </div>
@@ -79,13 +79,13 @@ const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
         <h3 className="text-xl font-bold text-slate-900 mb-4">{title}</h3>
         <div className="flex items-center justify-center h-full">
           <div className="text-center">
-            <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            <p className="text-slate-500 font-medium">No data available</p>
-            <p className="text-slate-400 text-sm mt-1">Add some transactions to see your spending breakdown</p>
+            <p className="text-black font-bold text-lg">No data available</p>
+            <p className="text-gray-700 text-base mt-1">Add some transactions to see your spending breakdown</p>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
       className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 p-6"
       style={{ height }}
     >
-      <h3 className="text-xl font-bold text-slate-900 mb-6">{title}</h3>
+      <h3 className="text-2xl font-bold text-black mb-6">{title}</h3>
       
       <ResponsiveContainer width="100%" height="70%">
         <PieChart>
@@ -107,11 +107,11 @@ const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
             cy="50%"
             labelLine={false}
             label={({ name, percentage }) => `${name} (${percentage}%)`}
-            outerRadius={80}
+            outerRadius={100}
             fill="#8884d8"
             dataKey="value"
             stroke="white"
-            strokeWidth={2}
+            strokeWidth={3}
           >
             {chartData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.fill} />
@@ -123,17 +123,17 @@ const CategorySpendingChart: React.FC<CategorySpendingChartProps> = ({
       </ResponsiveContainer>
 
       {/* Summary statistics */}
-      <div className="mt-6 pt-6 border-t border-slate-200/50">
+      <div className="mt-6 pt-6 border-t-2 border-gray-300">
         <div className="grid grid-cols-2 gap-4">
-          <div className="text-center p-3 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
-            <p className="text-sm text-slate-600 mb-1">Total Amount</p>
-            <p className="text-lg font-bold text-slate-900">
+          <div className="text-center p-3 bg-blue-100 border-2 border-blue-300 rounded-xl">
+            <p className="text-sm text-black font-semibold mb-1">Total Amount</p>
+            <p className="text-lg font-bold text-blue-700">
               ${data.reduce((sum, item) => sum + item.total, 0).toFixed(2)}
             </p>
           </div>
-          <div className="text-center p-3 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
-            <p className="text-sm text-slate-600 mb-1">Categories</p>
-            <p className="text-lg font-bold text-slate-900">{data.length}</p>
+          <div className="text-center p-3 bg-green-100 border-2 border-green-300 rounded-xl">
+            <p className="text-sm text-black font-semibold mb-1">Categories</p>
+            <p className="text-lg font-bold text-green-700">{data.length}</p>
           </div>
         </div>
       </div>
